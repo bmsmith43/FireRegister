@@ -25,7 +25,7 @@ namespace FireRegister.Services
       {
          if (forceRefresh)
          {
-            var json = await client.GetStringAsync($"api/item");
+            var json = await client.GetStringAsync($"api/employee");
             items = await Task.Run(() => JsonConvert.DeserializeObject<IEnumerable<Employee>>(json));
          }
 
@@ -36,7 +36,7 @@ namespace FireRegister.Services
       {
          if (id != null)
          {
-            var json = await client.GetStringAsync($"api/item/{id}");
+            var json = await client.GetStringAsync($"api/employee/{id}");
             return await Task.Run(() => JsonConvert.DeserializeObject<Employee>(json));
          }
 
@@ -50,7 +50,7 @@ namespace FireRegister.Services
 
          var serializedItem = JsonConvert.SerializeObject(item);
 
-         var response = await client.PostAsync($"api/item", new StringContent(serializedItem, Encoding.UTF8, "application/json"));
+         var response = await client.PostAsync($"api/employee", new StringContent(serializedItem, Encoding.UTF8, "application/json"));
 
          return response.IsSuccessStatusCode;
       }
@@ -64,7 +64,7 @@ namespace FireRegister.Services
          var buffer = Encoding.UTF8.GetBytes(serializedItem);
          var byteContent = new ByteArrayContent(buffer);
 
-         var response = await client.PutAsync(new Uri($"api/item/{item.Id}"), byteContent);
+         var response = await client.PutAsync(new Uri($"api/employee/{item.Id}"), byteContent);
 
          return response.IsSuccessStatusCode;
       }
@@ -74,7 +74,7 @@ namespace FireRegister.Services
          if (string.IsNullOrEmpty(id))
             return false;
 
-         var response = await client.DeleteAsync($"api/item/{id}");
+         var response = await client.DeleteAsync($"api/employee/{id}");
 
          return response.IsSuccessStatusCode;
       }
