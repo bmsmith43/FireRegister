@@ -4,11 +4,11 @@ using Xamarin.Forms.Xaml;
 namespace FireRegister.Views
 {
    [XamlCompilation(XamlCompilationOptions.Compile)]
-   public partial class MainPage : TabbedPage
-   {
-      public MainPage()
-      {
-         InitializeComponent();
-      }
-   }
+	public partial class SignInOutPage : ContentPage
+	{
+		public SignInOutPage ()
+		{
+			InitializeComponent ();
+		}
+	}
 }

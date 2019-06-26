@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using FireRegister.Services;
 using FireRegister.Views;
+using FireRegister.ViewModels;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace FireRegister
@@ -22,7 +23,10 @@ namespace FireRegister
          else
             DependencyService.Register<AzureDataStore>();
 
-         MainPage = new MainPage();
+         LoginPage loginPage = new LoginPage();
+         loginPage.BindingContext = new LoginViewModel();
+
+         MainPage = loginPage;
       }
 
       protected override void OnStart()
