@@ -21,7 +21,7 @@ namespace FireRegister.Services
          items = new List<Employee>();
       }
 
-      public async Task<IEnumerable<Employee>> GetItemsAsync(bool forceRefresh = false)
+      public async Task<IEnumerable<Employee>> GetEmployeeAsync(bool forceRefresh = false)
       {
          if (forceRefresh)
          {
@@ -32,7 +32,7 @@ namespace FireRegister.Services
          return items;
       }
 
-      public async Task<Employee> GetItemAsync(string id)
+      public async Task<Employee> GetEmployeeAsync(string id)
       {
          if (id != null)
          {
@@ -43,7 +43,7 @@ namespace FireRegister.Services
          return null;
       }
 
-      public async Task<bool> AddItemAsync(Employee item)
+      public async Task<bool> AddEmployeeAsync(Employee item)
       {
          if (item == null)
             return false;
@@ -55,7 +55,7 @@ namespace FireRegister.Services
          return response.IsSuccessStatusCode;
       }
 
-      public async Task<bool> UpdateItemAsync(Employee item)
+      public async Task<bool> UpdateEmployeeAsync(Employee item)
       {
          if (item == null || item.Id == null)
             return false;
@@ -69,7 +69,7 @@ namespace FireRegister.Services
          return response.IsSuccessStatusCode;
       }
 
-      public async Task<bool> DeleteItemAsync(string id)
+      public async Task<bool> DeleteEmployeeAsync(string id)
       {
          if (string.IsNullOrEmpty(id))
             return false;
