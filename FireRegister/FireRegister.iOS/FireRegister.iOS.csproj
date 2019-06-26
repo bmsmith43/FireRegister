@@ -143,4 +143,7 @@
       <Name>FireRegister</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\mitek.png" />
+  </ItemGroup>
 </Project>

@@ -1,17 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:FireRegister.Views"
              x:Class="FireRegister.Views.LoginPage"
              Title="{Binding Path=Title}">
+   <ContentPage.Resources>
+      <Color x:Key="Accent">#96d1ff</Color>
+      <views:NullOrEmptyToVisibilityConverter x:Key="_nullOrEmptyToVisibilityConverter" />
+   </ContentPage.Resources>
+
    <ContentPage.Content>
-      <StackLayout x:Name="_loginPageLayout">
+      <Grid>
+         <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+         </Grid.RowDefinitions>
+
+         <StackLayout Grid.Row="1"
+                      Margin="20,0,20,0"
+                      BackgroundColor="{StaticResource Accent}"
+                      VerticalOptions="FillAndExpand"
+                      HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center">
+               <ContentView Padding="0,40,0,40"
+                            VerticalOptions="FillAndExpand">
+                  <Image Source="mitek.png"
+                         VerticalOptions="Center"
+                         HeightRequest="64" />
+               </ContentView>
+            </StackLayout>
+         </StackLayout>
+
          <Entry x:Name="_userNameEntry"
+                Grid.Row="2"
+                Margin="20,0,20,0"
                 VerticalOptions="Center"
-                Placeholder="Initials..." />
+                Placeholder="Initials..."
+                Text="{Binding Path=Initials}" />
+
+         <Label Grid.Row="3"
+                Margin="20,0,20,0"
+                TextColor="Red"
+                Text="{Binding Path=Error}"
+                IsVisible="{Binding Path=Error, Mode=OneWay,
+                                    Converter={StaticResource _nullOrEmptyToVisibilityConverter}}" />
 
          <Button x:Name="_loginButton"
+                 Grid.Row="4"
+                 Margin="20,0,20,0"
                  Text="Login"
                  Command="{Binding Path=LoginCommand}"/>
-      </StackLayout>
+      </Grid>
    </ContentPage.Content>
 </ContentPage>

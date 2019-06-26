@@ -4,10 +4,10 @@ using FireRegister.Models;
 
 namespace FireRegister.ViewModels
 {
-   public class ItemDetailViewModel : BaseViewModel
+   public class NewUserViewModel : BaseViewModel
    {
       public Employee Item { get; set; }
-      public ItemDetailViewModel(Employee item = null)
+      public NewUserViewModel(Employee item = null)
       {
          Title = item?.Name;
          Item = item;

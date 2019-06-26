@@ -8,7 +8,7 @@ namespace FireRegister.Services
 {
    public class MockDataStore : IDataStore<Employee>
    {
-      List<Employee> _employees;
+      readonly List<Employee> _employees;
 
       public MockDataStore()
       {
@@ -58,7 +58,7 @@ namespace FireRegister.Services
          return await Task.FromResult(_employees.FirstOrDefault(s => s.Id == id));
       }
 
-      public async Task<IEnumerable<Employee>> GetEmployeeAsync(bool forceRefresh = false)
+      public async Task<IEnumerable<Employee>> GetEmployeesAsync(bool forceRefresh = false)
       {
          return await Task.FromResult(_employees);
       }

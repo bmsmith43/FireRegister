@@ -21,7 +21,7 @@ namespace FireRegister.Services
          items = new List<Employee>();
       }
 
-      public async Task<IEnumerable<Employee>> GetEmployeeAsync(bool forceRefresh = false)
+      public async Task<IEnumerable<Employee>> GetEmployeesAsync(bool forceRefresh = false)
       {
          if (forceRefresh)
          {
@@ -55,16 +55,14 @@ namespace FireRegister.Services
          return response.IsSuccessStatusCode;
       }
 
-      public async Task<bool> UpdateEmployeeAsync(Employee item)
+      public async Task<bool> UpdateEmployeeAsync(Employee employee)
       {
-         if (item == null || item.Id == null)
+         if (employee == null || employee.Id == null)
             return false;
 
-         var serializedItem = JsonConvert.SerializeObject(item);
-         var buffer = Encoding.UTF8.GetBytes(serializedItem);
-         var byteContent = new ByteArrayContent(buffer);
+         var serializedItem = JsonConvert.SerializeObject(employee);
 
-         var response = await client.PutAsync(new Uri($"api/employee/{item.Id}"), byteContent);
+         var response = await client.PutAsync("api/employee", new StringContent(serializedItem, Encoding.UTF8, "application/json"));
 
          return response.IsSuccessStatusCode;
       }

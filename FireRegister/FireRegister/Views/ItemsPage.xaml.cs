@@ -16,13 +16,13 @@ namespace FireRegister.Views
    [XamlCompilation(XamlCompilationOptions.Compile)]
    public partial class ItemsPage : ContentPage
    {
-      EmployeesViewModel viewModel;
+      RegisterViewModel viewModel;
 
       public ItemsPage()
       {
          InitializeComponent();
 
-         BindingContext = viewModel = new EmployeesViewModel();
+         BindingContext = viewModel = new RegisterViewModel();
       }
 
       async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -31,7 +31,7 @@ namespace FireRegister.Views
          if (item == null)
             return;
 
-         await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+         await Navigation.PushAsync(new ItemDetailPage(new NewUserViewModel(item)));
 
          // Manually deselect item.
          ItemsListView.SelectedItem = null;
@@ -46,7 +46,7 @@ namespace FireRegister.Views
       {
          base.OnAppearing();
 
-         if (viewModel.Items.Count == 0)
+         if (viewModel.Employees.Count == 0)
             viewModel.LoadItemsCommand.Execute(null);
       }
    }

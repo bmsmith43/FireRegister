@@ -7,13 +7,14 @@ namespace FireRegister.MobileAppService.Models
    public class EmployeeRepository : IEmployeeRepository
    {
       private static readonly ConcurrentDictionary<string, Employee> Employees =
-          new ConcurrentDictionary<string, Employee>();
+          new ConcurrentDictionary<string, Employee>(StringComparer.OrdinalIgnoreCase);
 
       public EmployeeRepository()
       {
-         var employees = new Employee[]
+         var employees = new []
          {
-            new Employee {Id = "Adu", Name = "Adrian Dunn"},
+            new Employee {Id = "ADu", Name = "Adrian Dunn"},
+            new Employee {Id = "ABh", Name = "Amine Bahouali"},
             new Employee {Id = "BRo", Name = "Bradley Robinson"},
             new Employee {Id = "CFe", Name = "Clive Ferguson"},
             new Employee {Id = "DMa", Name = "David Maffioli"},
@@ -27,6 +28,7 @@ namespace FireRegister.MobileAppService.Models
             new Employee {Id = "JKee", Name = "Jannine Krenzel"},
             new Employee {Id = "JMo", Name = "Joanne Morgan"},
             new Employee {Id = "JSm", Name = "Joss Smith"},
+            new Employee {Id = "JLo", Name = "James Lowe"},
             new Employee {Id = "JSp", Name = "John Speed"},
             new Employee {Id = "KRi", Name = "Kyle Richardson"},
             new Employee {Id = "LGo", Name = "Lukasz Golda"},
@@ -67,14 +69,12 @@ namespace FireRegister.MobileAppService.Models
 
       public void Add(Employee item)
       {
-         item.Id = Guid.NewGuid().ToString();
          Employees[item.Id] = item;
       }
 
       public Employee Find(string id)
       {
-         Employee item;
-         Employees.TryGetValue(id, out item);
+         Employees.TryGetValue(id, out var item);
 
          return item;
       }

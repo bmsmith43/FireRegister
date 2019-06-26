@@ -8,23 +8,23 @@ namespace FireRegister.MobileAppService.Controllers
    public class EmployeeController : Controller
    {
 
-      private readonly IEmployeeRepository IemployeeRepository;
+      private readonly IEmployeeRepository _employeeRepository;
 
       public EmployeeController(IEmployeeRepository itemRepository)
       {
-         IemployeeRepository = itemRepository;
+         _employeeRepository = itemRepository;
       }
 
       [HttpGet]
       public IActionResult List()
       {
-         return Ok(IemployeeRepository.GetAll());
+         return Ok(_employeeRepository.GetAll());
       }
 
       [HttpGet("{id}")]
-      public Employee GetItem(string id)
+      public Employee GetEmployee(string id)
       {
-         Employee item = IemployeeRepository.Get(id);
+         Employee item = _employeeRepository.Get(id);
          return item;
       }
 
@@ -38,7 +38,7 @@ namespace FireRegister.MobileAppService.Controllers
                return BadRequest("Invalid State");
             }
 
-            IemployeeRepository.Add(item);
+            _employeeRepository.Add(item);
 
          }
          catch (Exception)
@@ -49,15 +49,15 @@ namespace FireRegister.MobileAppService.Controllers
       }
 
       [HttpPut]
-      public IActionResult Edit([FromBody] Employee item)
+      public IActionResult Edit([FromBody] Employee employee)
       {
          try
          {
-            if (item == null || !ModelState.IsValid)
+            if (employee == null || !ModelState.IsValid)
             {
                return BadRequest("Invalid State");
             }
-            IemployeeRepository.Update(item);
+            _employeeRepository.Update(employee);
          }
          catch (Exception)
          {
@@ -69,7 +69,7 @@ namespace FireRegister.MobileAppService.Controllers
       [HttpDelete("{id}")]
       public void Delete(string id)
       {
-         IemployeeRepository.Remove(id);
+         _employeeRepository.Remove(id);
       }
    }
 }

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FireRegister.Views.RegisterPage"
+             Title="{Binding Path=Title}">
+   <ContentPage.Resources>
+      <DataTemplate x:Key="_registerItemTemplate">
+         <SwitchCell x:Name="_registerItemSwitchCell"
+                     Text="{Binding Path=Name}"
+                     On="{Binding Path=SignedIn}"/>
+      </DataTemplate>
+   </ContentPage.Resources>
+
+   <ContentPage.Content>
+      <StackLayout>
+         <ListView x:Name="ItemsListView" 
+                   ItemsSource="{Binding Path=Employees}"
+                   VerticalOptions="FillAndExpand"
+                   HasUnevenRows="true"
+                   RefreshCommand="{Binding Path=LoadEmployeesCommand}"
+                   IsPullToRefreshEnabled="true"
+                   IsRefreshing="{Binding Path=IsBusy, Mode=OneWay}"
+                   CachingStrategy="RecycleElement"
+                   ItemTemplate="{StaticResource _registerItemTemplate}">
+         </ListView>
+      </StackLayout>
+   </ContentPage.Content>
+</ContentPage>

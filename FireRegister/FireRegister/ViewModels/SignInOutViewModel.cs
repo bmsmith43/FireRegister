@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using System.Runtime.CompilerServices;
+using FireRegister.Models;
+using Xamarin.Forms;
 
 namespace FireRegister.ViewModels
 {
@@ -11,15 +13,15 @@ namespace FireRegister.ViewModels
       #endregion
 
       #region Fields
-      private bool _isSignedIn;
+      private Employee _employee;
 
       #endregion
 
       #region Constructors
-      public SignInOutViewModel()
+      public SignInOutViewModel(Employee employee)
       {
-         IsSignedIn = false; // TODO: Load sign-in status from cloud.
-         Title = IsSignedIn ? _signOutTitle : _signInTitle;
+         _employee = employee;
+         Title = _employee.SignedIn ? _signOutTitle : _signInTitle;
 
          SignInCommand = new Command(SignIn, CanSignIn);
          SignOutCommand = new Command(SignOut, CanSignOut);
@@ -28,11 +30,7 @@ namespace FireRegister.ViewModels
       #endregion
 
       #region Properties
-      public bool IsSignedIn
-      {
-         get { return _isSignedIn; }
-         set { SetProperty(ref _isSignedIn, value); }
-      }
+      public Employee Employee => _employee;
 
       #endregion
 
@@ -55,12 +53,13 @@ namespace FireRegister.ViewModels
       #region Command Handling Methods
       private bool CanSignIn()
       {
-         return IsSignedIn == false;
+         return !_employee.SignedIn;
       }
 
-      private void SignIn()
+      private async void SignIn()
       {
-         IsSignedIn = true;
+         _employee.SignedIn = true;
+         await DataStore.UpdateEmployeeAsync(_employee);
          Title = _signOutTitle;
 
          RefreshCommands();
@@ -68,12 +67,13 @@ namespace FireRegister.ViewModels
 
       private bool CanSignOut()
       {
-         return IsSignedIn;
+         return _employee.SignedIn;
       }
 
-      private void SignOut()
+      private async void SignOut()
       {
-         IsSignedIn = false;
+         _employee.SignedIn = false;
+         await DataStore.UpdateEmployeeAsync(_employee);
          Title = _signInTitle;
 
          RefreshCommands();

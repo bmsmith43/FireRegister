@@ -1,10 +1,31 @@
-﻿using FireRegister.Views;
+﻿using System.Net.Http;
+using FireRegister.Models;
+using FireRegister.Views;
 using Xamarin.Forms;
 
 namespace FireRegister.ViewModels
 {
    public class LoginViewModel : BaseViewModel
    {
+      private string _initials;
+      private string _error;
+
+      public string Initials
+      {
+         get => _initials;
+         set
+         {
+            if (SetProperty(ref _initials, value)) 
+               LoginCommand.ChangeCanExecute();
+         }
+      }
+
+      public string Error
+      {
+         get => _error;
+         set => SetProperty(ref _error, value);
+      }
+
       #region Constructors
       public LoginViewModel()
       {
@@ -22,12 +43,28 @@ namespace FireRegister.ViewModels
       #region Command Handling Methods
       private bool CanLogin()
       {
-         return true;
+         return !string.IsNullOrEmpty(Initials);
       }
 
-      private void Login()
+      private async void Login()
       {
-         Application.Current.MainPage = new MainPage();
+         Employee employee = null;
+         try
+         {
+            employee = await DataStore.GetEmployeeAsync(Initials);
+         }
+         catch (HttpRequestException)
+         {
+         }
+
+         if (employee != null)
+         {
+            Application.Current.MainPage = new MainPage(employee);
+         }
+         else
+         {
+            Error = "Couldn't find employee";
+         }
       }
 
       #endregion

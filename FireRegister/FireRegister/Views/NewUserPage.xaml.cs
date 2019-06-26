@@ -11,9 +11,9 @@ namespace FireRegister.Views
    [XamlCompilation(XamlCompilationOptions.Compile)]
    public partial class ItemDetailPage : ContentPage
    {
-      ItemDetailViewModel viewModel;
+      NewUserViewModel viewModel;
 
-      public ItemDetailPage(ItemDetailViewModel viewModel)
+      public ItemDetailPage(NewUserViewModel viewModel)
       {
          InitializeComponent();
 
@@ -30,7 +30,7 @@ namespace FireRegister.Views
             Name = "Employee Name"
          };
 
-         viewModel = new ItemDetailViewModel(item);
+         viewModel = new NewUserViewModel(item);
          BindingContext = viewModel;
       }
    }

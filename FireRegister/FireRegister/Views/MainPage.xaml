@@ -3,19 +3,17 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:views="clr-namespace:FireRegister.Views"
             xmlns:viewModels="clr-namespace:FireRegister.ViewModels"
-            x:Class="FireRegister.Views.MainPage">
+            x:Class="FireRegister.Views.MainPage"
+            x:Name="_mainPage">
    <TabbedPage.Children>
-      <views:SignInOutPage>
-         <views:SignInOutPage.BindingContext>
-            <viewModels:SignInOutViewModel />
-         </views:SignInOutPage.BindingContext>
-      </views:SignInOutPage>
+      <views:SignInOutPage BindingContext="{Binding Path=SignInOutViewModel,
+                                                    Source={x:Reference _mainPage}}" />
 
-      <views:FireRegisterPage>
-         <views:FireRegisterPage.BindingContext>
-            <viewModels:FireRegisterViewModel />
-         </views:FireRegisterPage.BindingContext>
-      </views:FireRegisterPage>
+      <views:RegisterPage>
+         <views:RegisterPage.BindingContext>
+            <viewModels:RegisterViewModel />
+         </views:RegisterPage.BindingContext>
+      </views:RegisterPage>
 
       <NavigationPage Title="About">
          <NavigationPage.Icon>

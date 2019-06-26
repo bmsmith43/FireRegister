@@ -1,29 +1,28 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
-
 using FireRegister.Models;
 using FireRegister.Views;
 
 namespace FireRegister.ViewModels
 {
-   public class EmployeesViewModel : BaseViewModel
+   public class RegisterViewModel : BaseViewModel
    {
-      public ObservableCollection<Employee> Items { get; set; }
+      public ObservableCollection<Employee> Employees { get; set; }
       public Command LoadItemsCommand { get; set; }
 
-      public EmployeesViewModel()
+      public RegisterViewModel()
       {
-         Title = "Browse";
-         Items = new ObservableCollection<Employee>();
+         Title = "Register";
+         Employees = new ObservableCollection<Employee>();
          LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
          MessagingCenter.Subscribe<NewItemPage, Employee>(this, "AddItem", async (obj, employee) =>
          {
-            Items.Add(employee);
+            Employees.Add(employee);
             await DataStore.AddEmployeeAsync(employee);
          });
       }
@@ -37,11 +36,11 @@ namespace FireRegister.ViewModels
 
          try
          {
-            Items.Clear();
-            var items = await DataStore.GetEmployeeAsync(true);
-            foreach (var item in items)
+            Employees.Clear();
+            var employees = await DataStore.GetEmployeesAsync(true);
+            foreach (var employee in employees.Where(e => e.SignedIn).OrderBy(e => e.Name))
             {
-               Items.Add(item);
+               Employees.Add(employee);
             }
          }
          catch (Exception ex)

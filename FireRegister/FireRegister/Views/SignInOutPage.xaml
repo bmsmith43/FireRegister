@@ -5,6 +5,13 @@
              Title="{Binding Path=Title}">
    <ContentPage.Content>
       <StackLayout>
+         <StackLayout Orientation="Horizontal"
+                      Margin="0,15,0,-15"
+                      HorizontalOptions="Center">
+            <Label Text="Logged in as: " />
+            <Label Text="{Binding Path=Employee.Name}" />
+         </StackLayout>
+
          <StackLayout x:Name="_buttonsStackLayout"
                       Orientation="Horizontal"
                       HorizontalOptions="CenterAndExpand"
