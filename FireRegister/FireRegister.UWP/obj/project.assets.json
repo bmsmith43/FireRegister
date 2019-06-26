@@ -7599,40 +7599,38 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\msmith\\.nuget\\packages\\": {},
+    "C:\\Users\\cferguson\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\msmith\\Source\\Repos\\bmsmith43\\FireRegister\\FireRegister\\FireRegister.UWP\\FireRegister.UWP.csproj",
+      "projectUniqueName": "C:\\Users\\cferguson\\Source\\Repos\\bmsmith43\\FireRegister\\FireRegister\\FireRegister.UWP\\FireRegister.UWP.csproj",
       "projectName": "FireRegister.UWP",
-      "projectPath": "C:\\Users\\msmith\\Source\\Repos\\bmsmith43\\FireRegister\\FireRegister\\FireRegister.UWP\\FireRegister.UWP.csproj",
-      "packagesPath": "C:\\Users\\msmith\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\msmith\\Source\\Repos\\bmsmith43\\FireRegister\\FireRegister\\FireRegister.UWP\\obj\\",
+      "projectPath": "C:\\Users\\cferguson\\Source\\Repos\\bmsmith43\\FireRegister\\FireRegister\\FireRegister.UWP\\FireRegister.UWP.csproj",
+      "packagesPath": "C:\\Users\\cferguson\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\cferguson\\Source\\Repos\\bmsmith43\\FireRegister\\FireRegister\\FireRegister.UWP\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\msmith\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
+        "C:\\Users\\cferguson\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "uap10.0.16299"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "uap10.0.16299": {
           "projectReferences": {
-            "C:\\Users\\msmith\\Source\\Repos\\bmsmith43\\FireRegister\\FireRegister\\FireRegister\\FireRegister.csproj": {
-              "projectPath": "C:\\Users\\msmith\\Source\\Repos\\bmsmith43\\FireRegister\\FireRegister\\FireRegister\\FireRegister.csproj"
+            "C:\\Users\\cferguson\\Source\\Repos\\bmsmith43\\FireRegister\\FireRegister\\FireRegister\\FireRegister.csproj": {
+              "projectPath": "C:\\Users\\cferguson\\Source\\Repos\\bmsmith43\\FireRegister\\FireRegister\\FireRegister\\FireRegister.csproj"
             }
           }
         }
