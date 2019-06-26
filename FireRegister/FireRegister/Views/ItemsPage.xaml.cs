@@ -27,7 +27,7 @@ namespace FireRegister.Views
 
       async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
       {
-         var item = args.SelectedItem as Item;
+         var item = args.SelectedItem as Employee;
          if (item == null)
             return;
 

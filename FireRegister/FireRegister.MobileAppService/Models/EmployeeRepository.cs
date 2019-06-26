@@ -11,9 +11,48 @@ namespace FireRegister.MobileAppService.Models
 
       public EmployeeRepository()
       {
-         Add(new Employee { Id = Guid.NewGuid().ToString(), Text = "Item 1", Description = "This is an item description." });
-         Add(new Employee { Id = Guid.NewGuid().ToString(), Text = "Item 2", Description = "This is an item description." });
-         Add(new Employee { Id = Guid.NewGuid().ToString(), Text = "Item 3", Description = "This is an item description." });
+         var employees = new Employee[]
+         {
+            new Employee {Id = "Adu", Name = "Adrian Dunn"},
+            new Employee {Id = "BRo", Name = "Bradley Robinson"},
+            new Employee {Id = "CFe", Name = "Clive Ferguson"},
+            new Employee {Id = "DMa", Name = "David Maffioli"},
+            new Employee {Id = "Eve", Name = "Ela Verdigi"},
+            new Employee {Id = "FLe", Name = "Fergus Leah"},
+            new Employee {Id = "GDa", Name = "Georgious Lamprinos"},
+            new Employee {Id = "JCh", Name = "Julian Chubb"},
+            new Employee {Id = "JDa", Name = "Joshua Davies"},
+            new Employee {Id = "JEd", Name = "Joshua Eddy"},
+            new Employee {Id = "JJa", Name = "Jack Jacques"},
+            new Employee {Id = "JKee", Name = "Jannine Krenzel"},
+            new Employee {Id = "JMo", Name = "Joanne Morgan"},
+            new Employee {Id = "JSm", Name = "Joss Smith"},
+            new Employee {Id = "JSp", Name = "John Speed"},
+            new Employee {Id = "KRi", Name = "Kyle Richardson"},
+            new Employee {Id = "LGo", Name = "Lukasz Golda"},
+            new Employee {Id = "MRo", Name = "Martin Rossiter"},
+            new Employee {Id = "MiWe", Name = "Michelle Weale"},
+            new Employee {Id = "MMc", Name = "Michael McHugh"},
+            new Employee {Id = "MRa", Name = "Michael Ravenscroft"},
+            new Employee {Id = "MRo", Name = "Malcolm Ross"},
+            new Employee {Id = "MSm", Name = "Mark Smith"},
+            new Employee {Id = "MWe", Name = "Mark Westwood"},
+            new Employee {Id = "MWo", Name = "Marta Wodzinska"},
+            new Employee {Id = "NBe", Name = "Nicholas Bentley"},
+            new Employee {Id = "NRa", Name = "Natalie Ravenhill"},
+            new Employee {Id = "OBe", Name = "Okera Beckford"},
+            new Employee {Id = "PDa", Name = "Paul Davies"},
+            new Employee {Id = "PTc", Name = "Paul Thane-Clarke"},
+            new Employee {Id = "PDu", Name = "Peter Undery"},
+            new Employee {Id = "RBa", Name = "Ryan Basterfield"},
+            new Employee {Id = "SZh", Name = "Shufen Zhang"},
+            new Employee {Id = "VCo", Name = "Vincent Couturier"},};
+
+         foreach (var employee in employees)
+         {
+            Add(employee);
+
+         }
       }
 
       public Employee Get(string id)

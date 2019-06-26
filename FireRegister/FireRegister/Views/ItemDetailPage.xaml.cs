@@ -24,10 +24,10 @@ namespace FireRegister.Views
       {
          InitializeComponent();
 
-         var item = new Item
+         var item = new Employee
          {
-            Text = "Item 1",
-            Description = "This is an item description."
+            Id = "New ID",
+            Name = "Employee Name"
          };
 
          viewModel = new ItemDetailViewModel(item);

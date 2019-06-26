@@ -1,4 +1,6 @@
-﻿namespace FireRegister.MobileAppService.Models
+﻿using System;
+
+namespace FireRegister.Models
 {
    public class Employee
    {
