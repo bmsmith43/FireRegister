@@ -8,42 +8,42 @@ using FireRegister.Models;
 
 namespace FireRegister.Services
 {
-   public class AzureDataStore : IDataStore<Item>
+   public class AzureDataStore : IDataStore<Employee>
    {
       HttpClient client;
-      IEnumerable<Item> items;
+      IEnumerable<Employee> items;
 
       public AzureDataStore()
       {
          client = new HttpClient();
          client.BaseAddress = new Uri($"{App.AzureBackendUrl}/");
 
-         items = new List<Item>();
+         items = new List<Employee>();
       }
 
-      public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)
+      public async Task<IEnumerable<Employee>> GetItemsAsync(bool forceRefresh = false)
       {
          if (forceRefresh)
          {
             var json = await client.GetStringAsync($"api/item");
-            items = await Task.Run(() => JsonConvert.DeserializeObject<IEnumerable<Item>>(json));
+            items = await Task.Run(() => JsonConvert.DeserializeObject<IEnumerable<Employee>>(json));
          }
 
          return items;
       }
 
-      public async Task<Item> GetItemAsync(string id)
+      public async Task<Employee> GetItemAsync(string id)
       {
          if (id != null)
          {
             var json = await client.GetStringAsync($"api/item/{id}");
-            return await Task.Run(() => JsonConvert.DeserializeObject<Item>(json));
+            return await Task.Run(() => JsonConvert.DeserializeObject<Employee>(json));
          }
 
          return null;
       }
 
-      public async Task<bool> AddItemAsync(Item item)
+      public async Task<bool> AddItemAsync(Employee item)
       {
          if (item == null)
             return false;
@@ -55,7 +55,7 @@ namespace FireRegister.Services
          return response.IsSuccessStatusCode;
       }
 
-      public async Task<bool> UpdateItemAsync(Item item)
+      public async Task<bool> UpdateItemAsync(Employee item)
       {
          if (item == null || item.Id == null)
             return false;

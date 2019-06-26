@@ -12,18 +12,18 @@ namespace FireRegister.ViewModels
 {
    public class ItemsViewModel : BaseViewModel
    {
-      public ObservableCollection<Item> Items { get; set; }
+      public ObservableCollection<Employee> Items { get; set; }
       public Command LoadItemsCommand { get; set; }
 
       public ItemsViewModel()
       {
          Title = "Browse";
-         Items = new ObservableCollection<Item>();
+         Items = new ObservableCollection<Employee>();
          LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-         MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
+         MessagingCenter.Subscribe<NewItemPage, Employee>(this, "AddItem", async (obj, item) =>
          {
-            var newItem = item as Item;
+            var newItem = item as Employee;
             Items.Add(newItem);
             await DataStore.AddItemAsync(newItem);
          });
