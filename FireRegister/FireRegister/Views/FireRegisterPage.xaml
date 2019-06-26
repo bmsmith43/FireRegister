@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FireRegister.Views.FireRegisterPage"
+             Title="{Binding Path=Title}">
+   <ContentPage.Resources>
+      <DataTemplate x:Key="_fireRegisterItemTemplate">
+         <SwitchCell x:Name="_registerItemSwitchCell"
+                     Text="{Binding Path=EmployeeName}"
+                     On="{Binding Path=IsChecked}" />
+      </DataTemplate>
+   </ContentPage.Resources>
+
+   <ContentPage.Content>
+      <StackLayout>
+         <!--<ListView x:Name="_fireRegisterListView"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   ItemsSource
+                   ItemTemplate="{StaticResource _fireRegisterItemTemplate}" />-->
+      </StackLayout>
+   </ContentPage.Content>
+</ContentPage>

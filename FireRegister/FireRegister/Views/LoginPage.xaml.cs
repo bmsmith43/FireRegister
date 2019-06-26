@@ -4,9 +4,9 @@ using Xamarin.Forms.Xaml;
 namespace FireRegister.Views
 {
    [XamlCompilation(XamlCompilationOptions.Compile)]
-   public partial class MainPage : TabbedPage
+   public partial class LoginPage : ContentPage
    {
-      public MainPage()
+      public LoginPage()
       {
          InitializeComponent();
       }
