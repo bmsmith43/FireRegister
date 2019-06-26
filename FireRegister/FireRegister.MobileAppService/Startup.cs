@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
+using FireRegister.MobileAppService.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Swagger;
-
-using FireRegister.Models;
 
 namespace FireRegister.MobileAppService
 {
@@ -30,7 +29,7 @@ namespace FireRegister.MobileAppService
       public void ConfigureServices(IServiceCollection services)
       {
          services.AddMvc();
-         services.AddSingleton<IItemRepository, ItemRepository>();
+         services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
 
          services.AddSwaggerGen(c =>
          {

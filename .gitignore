@@ -18,3 +18,5 @@
 /FireRegister/FireRegister.UWP/bin/x86
 /FireRegister/FireRegister.UWP/obj/x86/Debug
 /FireRegister/FireRegister.UWP/obj/x86/Release
+/FireRegister/FireRegister.iOS/bin/iPhoneSimulator/Debug
+/FireRegister/FireRegister.MobileAppService/bin/Debug/netcoreapp2.0

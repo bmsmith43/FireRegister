@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace FireRegister.Models
+﻿namespace FireRegister.MobileAppService.Models
 {
-   public class Item
+   public class Employee
    {
       public string Id { get; set; }
       public string Text { get; set; }

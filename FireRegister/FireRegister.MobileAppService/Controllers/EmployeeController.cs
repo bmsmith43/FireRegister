@@ -1,36 +1,35 @@
 ﻿using System;
+using FireRegister.MobileAppService.Models;
 using Microsoft.AspNetCore.Mvc;
 
-using FireRegister.Models;
-
-namespace FireRegister.Controllers
+namespace FireRegister.MobileAppService.Controllers
 {
    [Route("api/[controller]")]
-   public class ItemController : Controller
+   public class EmployeeController : Controller
    {
 
-      private readonly IItemRepository ItemRepository;
+      private readonly IEmployeeRepository IemployeeRepository;
 
-      public ItemController(IItemRepository itemRepository)
+      public EmployeeController(IEmployeeRepository itemRepository)
       {
-         ItemRepository = itemRepository;
+         IemployeeRepository = itemRepository;
       }
 
       [HttpGet]
       public IActionResult List()
       {
-         return Ok(ItemRepository.GetAll());
+         return Ok(IemployeeRepository.GetAll());
       }
 
       [HttpGet("{id}")]
-      public Item GetItem(string id)
+      public Employee GetItem(string id)
       {
-         Item item = ItemRepository.Get(id);
+         Employee item = IemployeeRepository.Get(id);
          return item;
       }
 
       [HttpPost]
-      public IActionResult Create([FromBody]Item item)
+      public IActionResult Create([FromBody]Employee item)
       {
          try
          {
@@ -39,7 +38,7 @@ namespace FireRegister.Controllers
                return BadRequest("Invalid State");
             }
 
-            ItemRepository.Add(item);
+            IemployeeRepository.Add(item);
 
          }
          catch (Exception)
@@ -50,7 +49,7 @@ namespace FireRegister.Controllers
       }
 
       [HttpPut]
-      public IActionResult Edit([FromBody] Item item)
+      public IActionResult Edit([FromBody] Employee item)
       {
          try
          {
@@ -58,7 +57,7 @@ namespace FireRegister.Controllers
             {
                return BadRequest("Invalid State");
             }
-            ItemRepository.Update(item);
+            IemployeeRepository.Update(item);
          }
          catch (Exception)
          {
@@ -70,7 +69,7 @@ namespace FireRegister.Controllers
       [HttpDelete("{id}")]
       public void Delete(string id)
       {
-         ItemRepository.Remove(id);
+         IemployeeRepository.Remove(id);
       }
    }
 }
