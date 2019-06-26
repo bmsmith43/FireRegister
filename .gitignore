@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/FireRegister/FireRegister/bin
+/FireRegister/FireRegister/obj
+/FireRegister/FireRegister.Android/bin
+/FireRegister/FireRegister.Android/obj
