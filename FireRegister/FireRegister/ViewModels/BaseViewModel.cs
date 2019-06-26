@@ -12,7 +12,7 @@ namespace FireRegister.ViewModels
 {
    public class BaseViewModel : INotifyPropertyChanged
    {
-      public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
+      public IDataStore<Employee> DataStore => DependencyService.Get<IDataStore<Employee>>() ?? new MockDataStore();
 
       bool isBusy = false;
       public bool IsBusy

@@ -8,54 +8,54 @@ using FireRegister.Models;
 
 namespace FireRegister.Services
 {
-   public class AzureDataStore : IDataStore<Item>
+   public class AzureDataStore : IDataStore<Employee>
    {
       HttpClient client;
-      IEnumerable<Item> items;
+      IEnumerable<Employee> items;
 
       public AzureDataStore()
       {
          client = new HttpClient();
          client.BaseAddress = new Uri($"{App.AzureBackendUrl}/");
 
-         items = new List<Item>();
+         items = new List<Employee>();
       }
 
-      public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)
+      public async Task<IEnumerable<Employee>> GetEmployeeAsync(bool forceRefresh = false)
       {
          if (forceRefresh)
          {
-            var json = await client.GetStringAsync($"api/item");
-            items = await Task.Run(() => JsonConvert.DeserializeObject<IEnumerable<Item>>(json));
+            var json = await client.GetStringAsync($"api/employee");
+            items = await Task.Run(() => JsonConvert.DeserializeObject<IEnumerable<Employee>>(json));
          }
 
          return items;
       }
 
-      public async Task<Item> GetItemAsync(string id)
+      public async Task<Employee> GetEmployeeAsync(string id)
       {
          if (id != null)
          {
-            var json = await client.GetStringAsync($"api/item/{id}");
-            return await Task.Run(() => JsonConvert.DeserializeObject<Item>(json));
+            var json = await client.GetStringAsync($"api/employee/{id}");
+            return await Task.Run(() => JsonConvert.DeserializeObject<Employee>(json));
          }
 
          return null;
       }
 
-      public async Task<bool> AddItemAsync(Item item)
+      public async Task<bool> AddEmployeeAsync(Employee item)
       {
          if (item == null)
             return false;
 
          var serializedItem = JsonConvert.SerializeObject(item);
 
-         var response = await client.PostAsync($"api/item", new StringContent(serializedItem, Encoding.UTF8, "application/json"));
+         var response = await client.PostAsync($"api/employee", new StringContent(serializedItem, Encoding.UTF8, "application/json"));
 
          return response.IsSuccessStatusCode;
       }
 
-      public async Task<bool> UpdateItemAsync(Item item)
+      public async Task<bool> UpdateEmployeeAsync(Employee item)
       {
          if (item == null || item.Id == null)
             return false;
@@ -64,17 +64,17 @@ namespace FireRegister.Services
          var buffer = Encoding.UTF8.GetBytes(serializedItem);
          var byteContent = new ByteArrayContent(buffer);
 
-         var response = await client.PutAsync(new Uri($"api/item/{item.Id}"), byteContent);
+         var response = await client.PutAsync(new Uri($"api/employee/{item.Id}"), byteContent);
 
          return response.IsSuccessStatusCode;
       }
 
-      public async Task<bool> DeleteItemAsync(string id)
+      public async Task<bool> DeleteEmployeeAsync(string id)
       {
          if (string.IsNullOrEmpty(id))
             return false;
 
-         var response = await client.DeleteAsync($"api/item/{id}");
+         var response = await client.DeleteAsync($"api/employee/{id}");
 
          return response.IsSuccessStatusCode;
       }

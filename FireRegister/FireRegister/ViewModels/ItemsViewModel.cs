@@ -10,22 +10,21 @@ using FireRegister.Views;
 
 namespace FireRegister.ViewModels
 {
-   public class ItemsViewModel : BaseViewModel
+   public class EmployeesViewModel : BaseViewModel
    {
-      public ObservableCollection<Item> Items { get; set; }
+      public ObservableCollection<Employee> Items { get; set; }
       public Command LoadItemsCommand { get; set; }
 
-      public ItemsViewModel()
+      public EmployeesViewModel()
       {
          Title = "Browse";
-         Items = new ObservableCollection<Item>();
+         Items = new ObservableCollection<Employee>();
          LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-         MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
+         MessagingCenter.Subscribe<NewItemPage, Employee>(this, "AddItem", async (obj, employee) =>
          {
-            var newItem = item as Item;
-            Items.Add(newItem);
-            await DataStore.AddItemAsync(newItem);
+            Items.Add(employee);
+            await DataStore.AddEmployeeAsync(employee);
          });
       }
 
@@ -39,7 +38,7 @@ namespace FireRegister.ViewModels
          try
          {
             Items.Clear();
-            var items = await DataStore.GetItemsAsync(true);
+            var items = await DataStore.GetEmployeeAsync(true);
             foreach (var item in items)
             {
                Items.Add(item);

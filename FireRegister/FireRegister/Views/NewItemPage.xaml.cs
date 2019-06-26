@@ -11,13 +11,13 @@ namespace FireRegister.Views
    [XamlCompilation(XamlCompilationOptions.Compile)]
    public partial class NewItemPage : ContentPage
    {
-      public Item Item { get; set; }
+      public Employee Item { get; set; }
 
       public NewItemPage()
       {
          InitializeComponent();
 
-         Item = new Item
+         Item = new Employee
          {
             Text = "Item name",
             Description = "This is an item description."
